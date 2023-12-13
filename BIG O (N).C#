@@ -1,0 +1,33 @@
+using System;
+
+class MaiorSalario
+{
+    static void Main()
+    {
+        double[] salarios = new double[4];
+        salarios[0] = 3200;
+        salarios[1] = 6000;
+        salarios[2] = 5000;
+        salarios[3] = 2200;
+
+        int menorSalario = 0;
+        int maiorSalario = 0;
+
+        for (int atual = 0; atual <= 3; atual++)
+        {
+            if (salarios[atual] < salarios[menorSalario])
+            {
+                menorSalario = atual;
+            }
+            for (atual = 0; atual <= 3; atual++)
+            {
+                if (salarios[atual] > salarios[maiorSalario])
+                {
+                    maiorSalario = atual;
+                }
+            }
+            Console.WriteLine("O menor salario é de " + salarios[menorSalario]);
+            Console.WriteLine("O maior salario é de " + salarios[maiorSalario]);
+        }
+    }
+}
