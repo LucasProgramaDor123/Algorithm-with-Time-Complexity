@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> elementos = new List<int> { 1, 2, 3 };
+
+        Console.WriteLine("Permutações:");
+        GeneratePermutations(elementos, 0, elementos.Count - 1);
+    }
+
+    static void GeneratePermutations(List<int> elementos, int inicio, int fim)
+    {
+        if (inicio == fim)
+        {
+            PrintPermutation(elementos);
+        }
+        else
+        {
+            for (int i = inicio; i <= fim; i++)
+            {
+                Swap(elementos, inicio, i);
+                GeneratePermutations(elementos, inicio + 1, fim);
+                Swap(elementos, inicio, i); // Desfaz a troca para voltar ao estado anterior
+            }
+        }
+    }
+
+    static void Swap(List<int> elementos, int i, int j)
+    {
+        int temp = elementos[i];
+        elementos[i] = elementos[j];
+        elementos[j] = temp;
+    }
+
+    static void PrintPermutation(List<int> elementos)
+    {
+        Console.WriteLine(string.Join(" ", elementos));
+    }
+}
