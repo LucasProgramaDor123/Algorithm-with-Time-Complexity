@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Criar um HashMap (Dictionary em C#)
+        Dictionary<string, int> hashMap = new Dictionary<string, int>();
+
+        // Inserir um elemento no HashMap
+        InsertElement(hashMap, "chave1", 10);
+
+        // Procurar um elemento no HashMap
+        int valor = GetElement(hashMap, "chave1");
+        Console.WriteLine("Valor encontrado: " + valor);
+    }
+
+    // Função para inserir um elemento no HashMap
+    static void InsertElement(Dictionary<string, int> hashMap, string chave, int valor)
+    {
+        if (!hashMap.ContainsKey(chave))
+        {
+            hashMap.Add(chave, valor);
+            Console.WriteLine("Elemento inserido com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("Chave já existe. Não foi possível inserir.");
+        }
+    }
+
+    // Função para obter um elemento do HashMap
+    static int GetElement(Dictionary<string, int> hashMap, string chave)
+    {
+        if (hashMap.TryGetValue(chave, out int valor))
+        {
+            return valor;
+        }
+        else
+        {
+            Console.WriteLine("Chave não encontrada. Retornando um valor padrão (0).");
+            return 0;
+        }
+    }
+}
